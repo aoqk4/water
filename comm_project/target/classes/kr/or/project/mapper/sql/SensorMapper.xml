@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.or.project.mapper.SensorMapper" >
+ 	
+ 	<insert id="createSensor" parameterType="kr.or.project.main.model.Sensor" >
+ 		INSERT INTO SENSOR(SENSOR_NM, DESCRIPTION) VALUES (#{sensorNm}, #{description})
+ 	</insert>
+ 	<select id="readALLSensor" resultType="kr.or.project.main.model.Sensor">
+ 		SELECT
+ 			*
+ 		FROM
+ 			SENSOR
+ 	</select>
+	<update id="updateSensor" parameterType="kr.or.project.main.model.Sensor">
+	 	UPDATE SENSOR SET SENSOR_NM = #{sensorNm}, DESCRIPTION = #{description} WHERE SENSOR_ID= #{sensorId}
+	</update>
+	<delete id="deleteSensor" parameterType="kr.or.project.main.model.Sensor">
+        DELETE FROM SENSOR WHERE SENSOR_ID = #{sensorId}
+    </delete>
+ 	
+</mapper>

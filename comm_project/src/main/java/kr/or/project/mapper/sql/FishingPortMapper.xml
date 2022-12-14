@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.or.project.mapper.FishingPortMapper" >
+
+	<!-- <select id="selectMainInfo" parameterType="kr.or.project.main.model.MainInfo" resultType="String">
+ 		 SELECT 
+ 		 	NOW(),
+ 		 	TO_CHAR(SYSDATE,'YYYY-MM-DD'),
+ 		 	from dual
+ 	</select> -->
+ 	
+<!--  	<select id="selectMainInfo" parameterType="kr.or.project.main.model.MainInfo" resultType="kr.or.project.main.model.MainInfo"> -->
+<!--  		 SELECT  -->
+<!--  		 	'홍길동' as mberNm, -->
+<!-- 		 	'홍길동 ID' as mberId -->
+<!-- 		   FROM DUAL -->
+<!--  	</select> -->
+ 	
+ 	<insert id="createFishingPort" parameterType="kr.or.project.main.model.FishingPort" >
+ 		INSERT INTO FISHING_PORT(PORT_NM, DESCRIPTION) VALUES(#{portNm}, #{description})
+ 	</insert>
+ 	<select id="readALLFishingPort" resultType="kr.or.project.main.model.FishingPort">
+ 		SELECT
+ 			*
+ 		FROM
+ 			FISHING_PORT
+ 	</select>
+ 	<!-- INSERT INTO fishing_port(PORT_NM, DESCRIPTION) VALUES('index5', 'test'); -->
+	<update id="updateFishingPort" parameterType="kr.or.project.main.model.FishingPort">
+	 	UPDATE FISHING_PORT SET PORT_NM = #{portNm}, DESCRIPTION= #{description} WHERE PORT_ID=#{portId}
+	</update>
+	<delete id="deleteFishingPort" parameterType="kr.or.project.main.model.FishingPort">
+        DELETE FROM FISHING_PORT WHERE PORT_ID = #{portId}
+    </delete>
+ 	
+</mapper>

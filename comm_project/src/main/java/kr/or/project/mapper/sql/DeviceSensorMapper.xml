@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.or.project.mapper.DeviceSensorMapper">
+
+	<insert id="createDeviceSensor"
+		parameterType="kr.or.project.main.model.DeviceSensor">
+		INSERT INTO DEVICE_SENSOR(DEVICE_ID, SENSOR_ID,
+		SENSOR_ST, SENSOR_VAL)
+		VALUES (#{deviceId}, #{sensorId}, #{sensorSt},
+		#{sensorVal})
+	</insert>
+
+	<select id="readALLDeviceSensor"
+		parameterType="kr.or.project.main.model.DeviceSensor"
+		resultType="kr.or.project.main.model.DeviceSensor">
+		SELECT
+		D_ST_ID DStId,
+		DEVICE_ID deviceId,
+		SENSOR_ID sensorId,
+		SENSOR_ST sensorSt,
+		SENSOR_VAL sensorVal,
+		CREATED_AT createdAt
+		FROM
+		DEVICE_SENSOR
+		WHERE SENSOR_ID = #{sensorId}
+		ORDER BY CREATED_AT DESC
+	</select>
+
+	<update id="updateDeviceSensor"
+		parameterType="kr.or.project.main.model.DeviceSensor">
+		UPDATE DEVICE_SENSOR SET SENSOR_ST = #{sensorSt} WHERE
+		D_ST_ID= #{DStId}
+	</update>
+	<delete id="deleteDeviceSensor"
+		parameterType="kr.or.project.main.model.DeviceSensor">
+		DELETE FROM DEVICE_SENSOR WHERE D_ST_ID = #{DStId}
+	</delete>
+
+
+	<select id="senosorLogPageNation"
+		parameterType="kr.or.project.main.model.DeviceSensor"
+		resultType="kr.or.project.main.model.DeviceSensor">
+		select D_ST_ID DStId,
+		DEVICE_ID deviceId,
+		SENSOR_ID sensorId,
+		SENSOR_ST sensorSt,
+		SENSOR_VAL sensorVal,
+		date_format(CREATED_AT,
+		'%Y-%m-%d %h:%m:%s') createdAt
+		FROM device_sensor
+		WHERE SENSOR_ID =
+		#{sensorId} order by UPDATED_AT DESC LIMIT 10 OFFSET
+		#{pageNum}
+	</select>
+
+</mapper>

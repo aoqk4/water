@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.or.project.mapper.DeviceMapper" >
+ 	
+ 	<insert id="createDevice" parameterType="kr.or.project.main.model.Device" >
+ 		INSERT INTO DEVICE(PORT_ID, DEVICE_NM, DESCRIPTION) VALUES (#{portId}, #{deviceNm}, #{description})
+ 	</insert>
+ 	<select id="readALLDevice" resultType="kr.or.project.main.model.Device">
+ 		SELECT
+ 			*
+ 		FROM
+ 			DEVICE
+ 		ORDER BY CREATED_AT DESC
+ 	</select>
+ 	<!-- INSERT INTO fishing_port(PORT_NM, DESCRIPTION) VALUES('index5', 'test'); -->
+	<update id="updateDevice" parameterType="kr.or.project.main.model.Device">
+	 	UPDATE DEVICE SET DEVICE_NM = #{deviceNm}, DESCRIPTION = #{description} WHERE DEVICE_ID= #{deviceId}
+	</update>
+	<delete id="deleteDevice" parameterType="kr.or.project.main.model.Device">
+        DELETE FROM DEVICE WHERE DEVICE_ID = #{deviceId}
+    </delete>
+ 	
+</mapper>

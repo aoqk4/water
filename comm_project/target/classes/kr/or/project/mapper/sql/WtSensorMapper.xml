@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.or.project.mapper.WtSensorMapper" >
+
+	<!-- select all -->
+ 	<select id="readALLWtSensor" resultType="kr.or.project.main.model.WtSensor">
+ 		select 
+ 		LIGHT_IN light,
+		WATER_QLTY ph,
+		WATER_LV Fishbowl,
+		TEMPERATURE temper,
+		date_format(CREATED_AT,
+		'%Y-%m-%d') date,
+		date_format(CREATED_AT,
+		'%h:%m:%s') time
+		FROM wt_sensor
+		order by CREATED_AT DESC LIMIT 10 OFFSET 0
+ 	</select>
+ 	
+ 	<!-- select light -->
+ 	<select id="readLightWtSensor" resultType="kr.or.project.main.model.WtSensor">
+ 		select
+ 		LIGHT_IN light,
+ 		date_format(CREATED_AT,
+		'%Y-%m-%d') date,
+		date_format(CREATED_AT,
+		'%h:%m:%s') time
+		FROM wt_sensor
+		order by CREATED_AT DESC LIMIT 10 OFFSET 0
+ 	</select>
+ 	
+	<update id="updateSensor" parameterType="kr.or.project.main.model.WtSensor">
+	 	UPDATE SENSOR SET SENSOR_NM = #{sensorNm}, DESCRIPTION = #{description} WHERE SENSOR_ID= #{sensorId}
+	</update>
+	<delete id="deleteSensor" parameterType="kr.or.project.main.model.WtSensor">
+        DELETE FROM SENSOR WHERE SENSOR_ID = #{sensorId}
+    </delete>
+ 	
+</mapper>
