@@ -15,6 +15,8 @@ public class WtSensor {
 	private String date; // created 날짜
 	
 	private String time; // created 시간
+	
+	private int offset;
 
 	public String getLight() {
 		return light;
@@ -62,6 +64,14 @@ public class WtSensor {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 
 	}
