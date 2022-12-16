@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<script>String sensor[] = new String['ph','temp','light','water']</script>
+<script>String sensor[] = new String['ph','temperature','light','waterLevel']</script>
 
 <!DOCTYPE html>
 <html>
@@ -59,20 +59,6 @@ th, td {
 	background: #fff;
 	border: 2px solid #666;
 }
-
-#modal .modal_layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-
-#modal_opne_btn:hover {
-	background-color: #8877b0;
-}
 </style>
 
 
@@ -96,129 +82,162 @@ th, td {
 
 	function drawVisualization() { /* 차트 데이터 setting */
 		var data = google.visualization.arrayToDataTable([
-				[ 'Month', 'ph', 'temp'],
-				[ '2004/05', 165, 400],
-				[ '2005/06', 135, 500],
-				[ '2006/07', 157, 127 ],
-				[ '2006/07', 157, 429 ]]);
+				[ 'Month', 'ph', 'temp' ], [ '2004/05', 165, 400 ],
+				[ '2005/06', 135, 386 ], [ '2006/07', 157, 127 ],
+				[ '2006/07', 157, 429 ] ]);
 		var options = { /* 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})*/
 			/* title : '수조 관리 데이터 차트', */
-			 chartArea: {
-				width:"80%",height:"85%", left:50, right:110,top: 20,
-				/* series: {
-		            0: { color: '#ffffff' },
-		            1: { color: '#c784de' }
-		        }, */
-                backgroundColor: {
-	                    fill: '',
-	                },
-	            },
-	            backgroundColor: {
-	                fill: '',
-	            },
-	            bar: { groupWidth: '27%', color: 'yellow' },
-				seriesType : 'bars'
-			/*  vAxis : {
-				title : 'Cups'
+			chartArea : {
+				width : "80%",
+				height : "85%",
+				left : 50,
+				right : 110,
+				top : 20,
+				backgroundColor : {
+					fill : '',
+				},
+			},
+			labels : {
+				fontColor : "white",
+				fontSize : 18
+			},
+			backgroundColor : {
+				fill : '',
+			},
+			bar : {
+				groupWidth : '27%',
+				color : 'yellow'
+			},
+			seriesType : 'bars',
+			colors : [ '#fef4a9', '#cabbe9' ],
+			vAxis : {
+				textStyle : {
+					color : 'white',
+					fontSize : 19
+				}
 			},
 			hAxis : {
-				title : 'Month'
-			},  */
-			/* series : {
-				5 : {
-					type : 'line'
+				textStyle : {
+					color : 'white',
+					fontSize : 19
 				}
-			} */    
+			},
+			legend : {
+				textStyle : {
+					color : 'white',
+					fontSize : 16
+
+				}
+			},
 		};
 
 		var chart = new google.visualization.ComboChart(document
 				.getElementById('chart_div')); /* 차트 그리기 */
 		chart.draw(data, options); /* 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) */
-		window.addEventListener('resize', drawVisualization, false);	// 반응형
-		window.addEventListener('resize', getElementById(''), false);	// 반응형
-				
+		window.addEventListener('resize', drawVisualization, false); // 반응형
+		/* window.addEventListener('resize', getElementById(''), false); */// 반응형
 	}
 </script>
 </head>
-<body style="background: #507496;">
+<body style="background: #324e7b;">
 	<!-- background: linear-gradient(#7cbac9, #507496); -->
 	<div
-		style="color: #cfdff4; display: flex; justify-content: center; font-size: 40px; font-weight: bold; font-style: inherit; padding-bottom: 30px; padding-top: 40px">수조
+		style="color: #f8f8f8; display: flex; justify-content: center; font-size: 40px; font-weight: bold; font-style: inherit; padding-bottom: 30px; padding-top: 40px">수조
 		관리 시스템 WEB</div>
+	<div>
+		<!-- *************FILTER************* -->
+		<div
+			style="display: flex; justify-content: flex-end; padding-right: 12%;">
+			<select id="time" onChange={}
+				style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
+				<option value="hour">hour</option>
+				<option value="week">week</option>
+				<option value="month">month</option>
+			</select>
+		</div>
 
-	<!-- *************CHART************* -->
-	<div
-		style="display: flex; justify-content: center; width: 100%; height: 50%;">
-		<div id="chart_div" style="width: 90%; height: 85%;"></div>
-
-	</div>
-
-
-	<!-- *************FILTER************* -->
-	<div style="display: flex; justify-content: end;">
-		<select id="time" onChange={}
-			style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
-			<option value="hour">hour</option>
-			<option value="week">week</option>
-			<option value="month">month</option>
-		</select>
-	</div>
-	<div style="width: 100%; height: 21%">
-		<div style="display: flex; justify-content: space-around;">
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn_temp"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Temprature</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Ph</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Light</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Water</button>
-			</div>
+		<!-- *************Chart************* -->
+		<div
+			style="display: flex; justify-content: center; width: 100%; height: 50vh; padding-bottom: 0%">
+			<div id="chart_div" style="width: 90%; height: 80%;"></div>
 		</div>
 		<div
-			style="display: flex; justify-content: space-around; margin-top: 10px">
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
+			style="display: flex; justify-content: flex-end; position: relative; right: 90px; bottom: 50px;">
+			<div
+				style="display: flex; justify-content: space-around; align-items: center; width: 10%; border-radius: 2px; border-color: white; margin-bottom: 40px;">
+				<div
+					style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div style="color: white;">정상</div>
+				<div
+					style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
+				<div style="color: white;">이상</div>
+			</div>
+		</div>
+	</div>
 
+
+	<div
+		style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
+		<div id="root" style="">
+			<!-- 모달창 -->
+			<button type="button" id="modal_opne_btn" value="temperature"
+				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+				Temperature
+				<div id="light_temperature"
+					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+			</button>
+		</div>
+		<div id="root">
+			<!-- 모달창 -->
+			<button type="button" id="modal_opne_btn" value="ph"
+				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+				Ph
+				<div id="light_ph"
+					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+			</button>
+		</div>
+		<div id="root" style="">
+			<!-- 모달창 -->
+			<button type="button" id="modal_opne_btn_light" value="light"
+				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+				Light
+				<div id="light_light"
+					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
+			</button>
+		</div>
+		<div id="root" style="">
+			<!-- 모달창 -->
+			<button type="button" id="modal_opne_btn_waterLevel"
+				value="waterLevel"
+				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+				WaterLevel
+				<div id="light_waterLevel"
+					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+			</button>
 		</div>
 	</div>
 	<div id="modal">
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn">X</button>
-			<h2>센서명</h2>
+			<h2>
+				<script>function(e){return e.value}</script>
+			</h2>
 			<p>센서데이터</p>
 			<input type="text" id="noticeSj" name="noticeSj" value="" />
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
 				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
-			<div id="listDiv" style="max-height: 50%; overflow: auto;">
+			<div id="listDiv" style="max-height: 700px; overflow: auto;">
 				<table>
-					<thead>
+					<thead
+						style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
-							<th>제목</th>
+							<th>Value</th>
 						</tr>
 					</thead>
 					<tbody id="listbody"
-						style="overflow: auto; width: 350px; height: 200px;">
-
+						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -233,9 +252,6 @@ th, td {
 			document.getElementById("modal").style.display = "none";
 		}
 	</script>
-	
-
-
 </body>
 
 </html>
