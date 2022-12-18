@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script language="javascript">
+</script>
 
-<script>String sensor[] = new String['ph','temperature','light','waterLevel']</script>
 
 <!DOCTYPE html>
 <html>
@@ -17,6 +19,23 @@
 <title>수조 관리 시스템</title>
 
 <style>
+/* mystyle.css */
+/* The Modal (background) */
+
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 table {
 	width: 100%;
 	border: 1px solid #444444;
@@ -30,7 +49,7 @@ th, td {
 	padding: 10px;
 }
 
-#modal { /* 모달창 */
+ .modal { /* 모달창 */
 	display: none;
 	position: fixed;
 	top: 50%;
@@ -42,23 +61,23 @@ th, td {
 	/* 	overflow-y: initial !important; */
 }
 
-#modal h2 {
+.modal h2 {
 	margin: 0;
 }
 
-#modal button {
+.modal button {
 	display: inline-block;
 	width: 100px;
 	margin-left: calc(100% - 100px - 10px);
 }
 
-#modal .modal_content {
+.modal .modal_content {
 	width: 700px;
 	margin: 100px auto;
 	padding: 20px 10px;
 	background: #fff;
 	border: 2px solid #666;
-}
+} 
 </style>
 
 
@@ -178,18 +197,18 @@ th, td {
 
 	<div
 		style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
-		<div id="root" style="">
+		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn" value="temperature"
+			<button type="button" id="modal_opne_btn_temper" value="temper"
 				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				Temperature
-				<div id="light_temperature"
+				<div id="light_temper"
 					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn" value="ph"
+			<button type="button" id="modal_opne_btn_ph" value="ph"
 				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				Ph
 				<div id="light_ph"
@@ -207,8 +226,7 @@ th, td {
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_waterLevel"
-				value="waterLevel"
+			<button type="button" id="modal_opne_btn_level" value="level"
 				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				WaterLevel
 				<div id="light_waterLevel"
@@ -216,13 +234,10 @@ th, td {
 			</button>
 		</div>
 	</div>
-	<div id="modal">
+	<div id="modal1" class="modal">
 		<div class="modal_content">
-			<button type="button" id="modal_close_btn">X</button>
-			<h2>
-				<script>function(e){return e.value}</script>
-			</h2>
-			<p>센서데이터</p>
+			<button type="button" id="modal_close_btn_temper">X</button>
+			<h2>Temperature</h2>
 			<input type="text" id="noticeSj" name="noticeSj" value="" />
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
@@ -236,7 +251,7 @@ th, td {
 							<th>Value</th>
 						</tr>
 					</thead>
-					<tbody id="listbody"
+					<tbody id="listbody1"
 						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
@@ -244,15 +259,110 @@ th, td {
 		</div>
 		<div class="modal_layer"></div>
 	</div>
-	<script>
-		document.getElementById("modal_opne_btn").onclick = function() {
-			document.getElementById("modal").style.display = "block";
-		}
-		document.getElementById("modal_close_btn").onclick = function() {
-			document.getElementById("modal").style.display = "none";
-		}
-	</script>
+	<div id="modal2" class="modal">
+		<div class="modal_content">
+			<button type="button" id="modal_close_btn_ph">X</button>
+			<h2>Ph</h2>
+			<input type="text" id="noticeSj" name="noticeSj" value="" />
+			********테이블********* <input type="button" id="btnSearch" value="조회"
+				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
+				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+				<table>
+					<thead
+						style="background-color: #fad3cf !important; position: sticky; top: 0">
+						<tr>
+							<th>ID</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody id="listbody2"
+						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="modal_layer"></div>
+	</div>
+	<div id="modal3" class="modal">
+		<div class="modal_content">
+			<button type="button" id="modal_close_btn_light">X</button>
+			<h2>Light</h2>
+			<input type="text" id="noticeSj" name="noticeSj" value="" />
+			********테이블********* <input type="button" id="btnSearch" value="조회"
+				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
+				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+				<table>
+					<thead
+						style="background-color: #fad3cf !important; position: sticky; top: 0">
+						<tr>
+							<th>ID</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody id="listbody3"
+						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="modal_layer"></div>
+	</div>
+	<div id="modal4" class="modal">
+		<div class="modal_content">
+			<button type="button" id="modal_close_btn_level">X</button>
+			<h2>WaterLevel</h2>
+			<input type="text" id="noticeSj" name="noticeSj" value="" />
+			********테이블********* <input type="button" id="btnSearch" value="조회"
+				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
+				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+				<table>
+					<thead
+						style="background-color: #fad3cf !important; position: sticky; top: 0">
+						<tr>
+							<th>ID</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody id="listbody4"
+						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="modal_layer"></div>
+	</div>
+
 </body>
+<script>
+	document.getElementById("modal_opne_btn_temper").onclick = function() {
+		document.getElementById("modal1").style.display = "block";
+	}
+	document.getElementById("modal_close_btn_temper").onclick = function() {
+		document.getElementById("modal1").style.display = "none";
+	}
+	document.getElementById("modal_opne_btn_ph").onclick = function() {
+		document.getElementById("modal2").style.display = "block";
+	}
+	document.getElementById("modal_close_btn_ph").onclick = function() {
+		document.getElementById("modal2").style.display = "none";
+	}
+	document.getElementById("modal_opne_btn_light").onclick = function() {
+		document.getElementById("modal3").style.display = "block";
+	}
+	document.getElementById("modal_close_btn_light").onclick = function() {
+		document.getElementById("modal3").style.display = "none";
+	}
+	document.getElementById("modal_opne_btn_level").onclick = function() {
+		document.getElementById("modal4").style.display = "block";
+	}
+	document.getElementById("modal_close_btn_level").onclick = function() {
+		document.getElementById("modal4").style.display = "none";
+	}
+</script>
+
 
 </html>
 
