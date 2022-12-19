@@ -5,7 +5,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script language="javascript">
 </script>
-<script>String sensor[] = new String['ph','temp','light','water']</script>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +48,8 @@ th, td {
 	border: 1px solid #444444;
 	padding: 10px;
 }
-#modal { /* 모달창 */
 
+ .modal { /* 모달창 */
 	display: none;
 	position: fixed;
 	top: 50%;
@@ -59,43 +60,24 @@ th, td {
 	z-index: 1;
 	/* 	overflow-y: initial !important; */
 }
+
 .modal h2 {
 	margin: 0;
 }
 
 .modal button {
-
-#modal h2 {
-	margin: 0;
-}
-#modal button {
-
 	display: inline-block;
 	width: 100px;
 	margin-left: calc(100% - 100px - 10px);
 }
-#modal .modal_content {
+
+.modal .modal_content {
 	width: 700px;
 	margin: 100px auto;
 	padding: 20px 10px;
 	background: #fff;
 	border: 2px solid #666;
 } 
-
-
-#modal .modal_layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-
-#modal_opne_btn:hover {
-	background-color: #8877b0;
-}
 </style>
 
 
@@ -166,39 +148,6 @@ th, td {
 
 				}
 			},
-				[ 'Month', 'ph', 'temp'],
-				[ '2004/05', 165, 400],
-				[ '2005/06', 135, 500],
-				[ '2006/07', 157, 127 ],
-				[ '2006/07', 157, 429 ]]);
-		var options = { /* 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})*/
-			/* title : '수조 관리 데이터 차트', */
-			 chartArea: {
-				width:"80%",height:"85%", left:50, right:110,top: 20,
-				/* series: {
-		            0: { color: '#ffffff' },
-		            1: { color: '#c784de' }
-		        }, */
-                backgroundColor: {
-	                    fill: '',
-	                },
-	            },
-	            backgroundColor: {
-	                fill: '',
-	            },
-	            bar: { groupWidth: '27%', color: 'yellow' },
-				seriesType : 'bars'
-			/*  vAxis : {
-				title : 'Cups'
-			},
-			hAxis : {
-				title : 'Month'
-			},  */
-			/* series : {
-				5 : {
-					type : 'line'
-				}
-			} */    
 		};
 
 		var chart = new google.visualization.ComboChart(document
@@ -364,76 +313,6 @@ th, td {
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn_level">X</button>
 			<h2>WaterLevel</h2>
-		window.addEventListener('resize', drawVisualization, false);	// 반응형
-		window.addEventListener('resize', getElementById(''), false);	// 반응형
-				
-	}
-</script>
-</head>
-<body style="background: #507496;">
-	<!-- background: linear-gradient(#7cbac9, #507496); -->
-	<div
-		style="color: #cfdff4; display: flex; justify-content: center; font-size: 40px; font-weight: bold; font-style: inherit; padding-bottom: 30px; padding-top: 40px">수조
-		관리 시스템 WEB</div>
-
-	<!-- *************CHART************* -->
-	<div
-		style="display: flex; justify-content: center; width: 100%; height: 50%;">
-		<div id="chart_div" style="width: 90%; height: 85%;"></div>
-
-	</div>
-
-
-	<!-- *************FILTER************* -->
-	<div style="display: flex; justify-content: end;">
-		<select id="time" onChange={}
-			style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
-			<option value="hour">hour</option>
-			<option value="week">week</option>
-			<option value="month">month</option>
-		</select>
-	</div>
-	<div style="width: 100%; height: 21%">
-		<div style="display: flex; justify-content: space-around;">
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn_temp"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Temprature</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn_ph"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Ph</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn_light"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Light</button>
-			</div>
-			<div id="root">
-				<!-- 모달창 -->
-				<button type="button" id="modal_opne_btn_level"
-					style="background-color: #edd28c; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 1px;">Water</button>
-			</div>
-		</div>
-		<div
-			style="display: flex; justify-content: space-around; margin-top: 10px">
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-			<div id="light"
-				style="display: flex; justify-content: center; width: 170px; height: 30px; border-width: 1px; border-style: solid; border-color: black; background-color: gray;"></div>
-
-		</div>
-	</div>
-	<div id="modal">
-		<div class="modal_content">
-			<button type="button" id="modal_close_btn">X</button>
-			<h2>센서명</h2>
-			<p>센서데이터</p>
 			<input type="text" id="noticeSj" name="noticeSj" value="" />
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
@@ -449,17 +328,6 @@ th, td {
 					</thead>
 					<tbody id="listbody4"
 						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
-			<div id="listDiv" style="max-height: 50%; overflow: auto;">
-				<table>
-					<thead>
-						<tr>
-							<th>num</th>
-							<th>time</th>
-							<th>value</th>
-						</tr>
-					</thead>
-					<tbody id="listbody"
-						style="width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -497,19 +365,4 @@ th, td {
 
 
 </html>
-		<!-- <div class="modal_layer"></div> -->
-	</div>
-	<script>
-		document.getElementById("modal_opne_btn_temp").onclick = function() {
-			document.getElementById("modal").style.display = "block";
-		}
-		document.getElementById("modal_close_btn").onclick = function() {
-			document.getElementById("modal").style.display = "none";
-		}
-	</script>
 
-
-
-</body>
-
-</html>
