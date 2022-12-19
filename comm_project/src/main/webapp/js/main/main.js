@@ -118,8 +118,10 @@ function post(sensor) {
   var url = "http://61.103.243.89:8080/deviceAPI/post" + sensor;
   // http://61.103.243.89:8080/deviceAPI/{posttemper}
   var param = new Object();
+  param.noticeSj = $("#noticeSj").val();
   param.offset = 15; // **************** 현재 데이터 갯수만 보내줌. 그래야 그 다음 값 가지고 옴
-  console.log(sensor);
+//  console.log(sensor);
+	console.log(JSON.stringify(param));
   var data = []; 
   
   $.ajax({
@@ -131,7 +133,7 @@ function post(sensor) {
   })
     .done(function (result) {
       console.log("result : ", result);
-      data = result;	// result를 data 배열에 넣음!!!!
+      data = result;	// result를 data 배열에 넣음!!!!*************여기서부터 해야 됌!!!!!!배열에 넣고 불러오는 것 까지 & 버튼 누를 때마다 초기화
       if (data) {
     	  console.log("data : ", data );
           $.each(data, function (idx, item) {
