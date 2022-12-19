@@ -7,7 +7,11 @@ import kr.or.project.main.model.WtSensor;
 
 public interface WtSensorService {	
 	public List<WtSensor> createSensor(WtSensor WtSensor);
-	public List<WtSensor> readALLWtSensor();
+	public List<WtSensor> readALLWtSensor(WtSensor WtSensor);
+	public List<WtSensor> readLightWtSensor(WtSensor WtSensor);
+	public List<WtSensor> readPhWtSensor(WtSensor WtSensor);
+	public List<WtSensor> readLevelWtSensor(WtSensor WtSensor);
+	public List<WtSensor> readTemperWtSensor(WtSensor WtSensor);
 	public List<WtSensor> updateWtSensor(WtSensor WtSensor);
 	public List<WtSensor> deleteSensor(WtSensor WtSensor);
 }
