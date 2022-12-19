@@ -242,7 +242,7 @@ th, td {
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
 				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
-			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+			<div id="listDiv1" style="max-height: 700px; overflow: auto;">
 				<table>
 					<thead
 						style="background-color: #fad3cf !important; position: sticky; top: 0">
@@ -267,7 +267,7 @@ th, td {
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
 				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
-			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+			<div id="listDiv2" style="max-height: 700px; overflow: auto;">
 				<table>
 					<thead
 						style="background-color: #fad3cf !important; position: sticky; top: 0">
@@ -292,7 +292,7 @@ th, td {
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
 				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
-			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+			<div id="listDiv3" style="max-height: 700px; overflow: auto;">
 				<table>
 					<thead
 						style="background-color: #fad3cf !important; position: sticky; top: 0">
@@ -317,7 +317,7 @@ th, td {
 			********테이블********* <input type="button" id="btnSearch" value="조회"
 				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
 				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
-			<div id="listDiv" style="max-height: 700px; overflow: auto;">
+			<div id="listDiv4" style="max-height: 700px; overflow: auto;">
 				<table>
 					<thead
 						style="background-color: #fad3cf !important; position: sticky; top: 0">
