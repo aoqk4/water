@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.or.project.main.model.Device;
 import kr.or.project.main.model.DeviceSensor;
 import kr.or.project.main.model.Sensor;
+import kr.or.project.main.model.SensorReadings;
+import kr.or.project.main.model.WtChart;
 import kr.or.project.main.model.WtSensor;
 import kr.or.project.main.service.DeviceSensorService;
 import kr.or.project.main.service.DeviceService;
@@ -37,24 +40,86 @@ public class DeviceController {
 	@Autowired
 	DeviceService deviceService;
 	
-//	@Autowired
-//	SensorService sensorService;
-	
 	@Autowired
 	DeviceSensorService deviceSensorService;
 	
 	@Autowired
 	WtSensorService wtSensorService;
-
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/deviceGet")
+	@CrossOrigin(origins = "*") // cors우회
 	public List<WtSensor> getDevice(HttpServletRequest request, Model model) throws Exception {
 		WtSensor wtSensor = new WtSensor();
-		List<WtSensor> result = wtSensorService.readALLWtSensor();
+		
+		List<WtSensor> result = wtSensorService.readALLWtSensor(wtSensor);
+		
+		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/postlight")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtSensor> postLight(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+		List<WtSensor> result = wtSensorService.readLightWtSensor(wtSensor);
+		
+		return result;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, path = "/postph")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtSensor> postPh(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+		List<WtSensor> result = wtSensorService.readPhWtSensor(wtSensor);
+		
+		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/postlevel")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtSensor> postLevel(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+		List<WtSensor> result = wtSensorService.readLevelWtSensor(wtSensor);
+		
+		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/posttemper")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtSensor> postTemper(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+		List<WtSensor> result = wtSensorService.readTemperWtSensor(wtSensor);
 		
 		System.out.println(result);
 		return result;
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, path = "/postsensor")
+	@CrossOrigin(origins = "*") // cors우회
+	public void postSensor(HttpServletRequest request, Model model, @RequestBody SensorReadings sensorReadings) throws Exception {
+		wtSensorService.insertSensorReadings(sensorReadings);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/getcharthour")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtChart> getChartHour(HttpServletRequest request, Model model) throws Exception {
+		WtChart wtChart = new WtChart();
+		
+		List<WtChart> result = wtSensorService.readChartHour(wtChart);
+		
+		System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/getchartday")
+	@CrossOrigin(origins = "*") // cors우회
+	public List<WtChart> getChartDay(HttpServletRequest request, Model model) throws Exception {
+		WtChart wtChart = new WtChart();
+		
+		List<WtChart> result = wtSensorService.readChartDay(wtChart);
+		
+		System.out.println(result);
+		return result;
+	}
+	
+	
+	//***********************************************************
+	 
 	@RequestMapping(method = RequestMethod.GET, path = "/sensorGet")
 	public Map getSensor(HttpServletRequest request, Model model) throws Exception {
 		DeviceSensor deviceSensor = new DeviceSensor();
