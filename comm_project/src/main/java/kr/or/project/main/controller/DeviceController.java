@@ -53,36 +53,62 @@ public class DeviceController {
 		
 		List<WtSensor> result = wtSensorService.readALLWtSensor(wtSensor);
 		
+		System.out.println(result);
 		return result;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/postlight")
 	@CrossOrigin(origins = "*") // cors우회
 	public List<WtSensor> postLight(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+
 		List<WtSensor> result = wtSensorService.readLightWtSensor(wtSensor);
 		
+		System.out.println(wtSensor.getOffset());
+
+		List<WtSensor> result = wtSensorService.readLightWtSensor(wtSensor);
+		
+		System.out.println(result);
 		return result;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/postph")
 	@CrossOrigin(origins = "*") // cors우회
 	public List<WtSensor> postPh(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+
 		List<WtSensor> result = wtSensorService.readPhWtSensor(wtSensor);
 		
+
+		System.out.println(wtSensor.getOffset());
+
+		List<WtSensor> result = wtSensorService.readPhWtSensor(wtSensor);
+		
+		System.out.println(result);
+
 		return result;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/postlevel")
 	@CrossOrigin(origins = "*") // cors우회
 	public List<WtSensor> postLevel(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+
 		List<WtSensor> result = wtSensorService.readLevelWtSensor(wtSensor);
 		
+
+		System.out.println(wtSensor.getOffset());
+
+		List<WtSensor> result = wtSensorService.readLevelWtSensor(wtSensor);
+		
+		System.out.println(result);
+
 		return result;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/posttemper")
 	@CrossOrigin(origins = "*") // cors우회
 	public List<WtSensor> postTemper(HttpServletRequest request, Model model, @RequestBody WtSensor wtSensor) throws Exception {
+
+		System.out.println(wtSensor.getOffset());
+
 		List<WtSensor> result = wtSensorService.readTemperWtSensor(wtSensor);
 		
 		System.out.println(result);
@@ -116,8 +142,6 @@ public class DeviceController {
 		System.out.println(result);
 		return result;
 	}
-	
-	
 	//***********************************************************
 	 
 	@RequestMapping(method = RequestMethod.GET, path = "/sensorGet")

@@ -111,4 +111,71 @@
 		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") created_at FROM wt_sensor GROUP BY
 		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") ORDER BY CREATED_AT DESC
 	</select>
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
+		CREATED_AT DESC LIMIT 50 OFFSET #{offset}
+	</select>
+
+	<!-- select ph -->
+	<select id="readPhWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		WATER_QLTY ph,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
+		CREATED_AT DESC LIMIT 50 OFFSET #{offset}
+	</select>
+
+	<!-- select water_level -->
+	<select id="readLevelWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		WATER_LV Fishbowl,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
+		CREATED_AT DESC LIMIT 50 OFFSET #{offset}
+	</select>
+
+	<!-- select temper -->
+	<select id="readTemperWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		TEMPERATURE temper,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order
+		by
+		CREATED_AT DESC LIMIT 50 OFFSET #{offset}
+	</select>
+
+	<update id="updateSensor"
+		parameterType="kr.or.project.main.model.WtSensor">
+		UPDATE SENSOR SET SENSOR_NM = #{sensorNm}, DESCRIPTION =
+		#{description}
+		WHERE SENSOR_ID= #{sensorId}
+	</update>
+	<delete id="deleteSensor"
+		parameterType="kr.or.project.main.model.WtSensor">
+		DELETE FROM SENSOR WHERE SENSOR_ID = #{sensorId}
+	</delete>
+
 </mapper>
