@@ -34,6 +34,87 @@
 		'%T') time
 		FROM wt_sensor
 		order by
+		CREATED_AT DESC
+	</select>
+
+	<!-- select ph -->
+	<select id="readPhWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		WATER_QLTY ph,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
+		CREATED_AT DESC
+	</select>
+
+	<!-- select water_level -->
+	<select id="readLevelWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		WATER_LV Fishbowl,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
+		CREATED_AT DESC
+	</select>
+
+	<!-- select temper -->
+	<select id="readTemperWtSensor"
+		parameterType="kr.or.project.main.model.WtSensor"
+		resultType="kr.or.project.main.model.WtSensor">
+		select
+		TEMPERATURE temper,
+		date_format(CREATED_AT,
+		'%Y-%m-%d')
+		date,
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order
+		by
+		CREATED_AT DESC
+	</select>
+
+	<!-- insert sensorReadings -->
+	<insert id="insertSensorReadings"
+		parameterType="kr.or.project.main.model.SensorReadings">
+		INSERT INTO wt_sensor(LIGHT_IN, WATER_QLTY, WATER_LV,
+		TEMPERATURE,
+		CREATED_AT) VALUES(#{light}, #{ph}, #{Fishbowl},
+		#{temper},
+		#{createdAt})
+	</insert>
+
+	<!-- select light -->
+	<select id="readChartHour"
+		resultType="kr.or.project.main.model.WtChart">
+		SELECT format(AVG(WATER_QLTY), 3) ph, format(AVG(TEMPERATURE), 3) temper,
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d %H:00") created_at FROM wt_sensor GROUP BY
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d %H") ORDER BY CREATED_AT DESC
+	</select>
+
+	<!-- select light -->
+	<select id="readChartDay"
+		resultType="kr.or.project.main.model.WtChart">
+		SELECT format(AVG(WATER_QLTY), 3) ph, format(AVG(TEMPERATURE), 3) temper,
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") created_at FROM wt_sensor GROUP BY
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") ORDER BY CREATED_AT DESC
+	</select>
+		date_format(CREATED_AT,
+		'%T') time
+		FROM wt_sensor
+		order by
 		CREATED_AT DESC LIMIT 50 OFFSET #{offset}
 	</select>
 
