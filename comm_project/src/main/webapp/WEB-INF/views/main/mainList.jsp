@@ -93,18 +93,19 @@ th, td {
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- 차트 -->
 <script type="text/javascript">
-	google.charts.load('current', {
+	
+	/* google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
-	google.charts.setOnLoadCallback(drawVisualization);
+	google.charts.setOnLoadCallback(drawVisualization); */
 
-	function drawVisualization() { /* 차트 데이터 setting */
+/* 	function drawVisualization() { // 차트 데이터 setting 
 		var data = google.visualization.arrayToDataTable([
 				[ 'Month', 'ph', 'temp' ], [ '2004/05', 165, 400 ],
 				[ '2005/06', 135, 386 ], [ '2006/07', 157, 127 ],
 				[ '2006/07', 157, 429 ] ]);
-		var options = { /* 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})*/
-			/* title : '수조 관리 데이터 차트', */
+		var options = { // 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})
+			// title : '수조 관리 데이터 차트', 
 			chartArea : {
 				width : "80%",
 				height : "85%",
@@ -150,11 +151,11 @@ th, td {
 		};
 
 		var chart = new google.visualization.ComboChart(document
-				.getElementById('chart_div')); /* 차트 그리기 */
-		chart.draw(data, options); /* 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) */
+				.getElementById('chart_div')); // 차트 그리기/
+		chart.draw(data, options); // 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) 
 		window.addEventListener('resize', drawVisualization, false); // 반응형
-		/* window.addEventListener('resize', getElementById(''), false); */// 반응형
-	}
+		// window.addEventListener('resize', getElementById(''), false); // 반응형
+	}*/ 
 </script>
 </head>
 <body style="background: #324e7b;">
@@ -163,10 +164,9 @@ th, td {
 	<div>
 		<!-- *************FILTER************* -->
 		<div style="display: flex; justify-content: flex-end; padding-right: 12%;">
-			<select id="time" onChange={} style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
-				<option value="hour">hour</option>
-				<option value="week">week</option>
-				<option value="month">month</option>
+			<select id="time" style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
+				<option value="hour" selected>hour</option>
+				<option value="day">day</option>
 			</select>
 		</div>
 
@@ -223,7 +223,7 @@ th, td {
 			</div>
 			<button type="button" id="reload1" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv1" style="max-height: 700px; overflow: auto;">
-				<table id = "table1">
+				<table id="table1">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
@@ -245,7 +245,7 @@ th, td {
 			</div>
 			<button type="button" id="reload2" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv2" style="max-height: 700px; overflow: auto;">
-				<table id = "table2">
+				<table id="table2">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
@@ -267,7 +267,7 @@ th, td {
 			</div>
 			<button type="button" id="reload3" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv3" style="max-height: 700px; overflow: auto;">
-				<table id = "table3">
+				<table id="table3">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
@@ -289,7 +289,7 @@ th, td {
 			</div>
 			<button type="button" id="reload4" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv4" style="max-height: 700px; overflow: auto;">
-				<table id = "table4">
+				<table id="table4">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
@@ -306,10 +306,9 @@ th, td {
 
 </body>
 <script>
-
-/* 	function reloadDivArea() {
-		$('reload1').load(location.href + ' reload1');
-	} */
+	/* 	function reloadDivArea() {
+	 $('reload1').load(location.href + ' reload1');
+	 } */
 	document.getElementById("modal_opne_btn_temper").onclick = function() {
 		document.getElementById("modal1").style.display = "block";
 	}
