@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script language="javascript">
+	
 </script>
 
 
@@ -49,7 +49,7 @@ th, td {
 	padding: 10px;
 }
 
- .modal { /* 모달창 */
+.modal { /* 모달창 */
 	display: none;
 	position: fixed;
 	top: 50%;
@@ -77,7 +77,7 @@ th, td {
 	padding: 20px 10px;
 	background: #fff;
 	border: 2px solid #666;
-} 
+}
 </style>
 
 
@@ -90,8 +90,7 @@ th, td {
 	});
 </script>
 
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- 차트 -->
 <script type="text/javascript">
 	google.charts.load('current', {
@@ -160,15 +159,11 @@ th, td {
 </head>
 <body style="background: #324e7b;">
 	<!-- background: linear-gradient(#7cbac9, #507496); -->
-	<div
-		style="color: #f8f8f8; display: flex; justify-content: center; font-size: 40px; font-weight: bold; font-style: inherit; padding-bottom: 30px; padding-top: 40px">수조
-		관리 시스템 WEB</div>
+	<div style="color: #f8f8f8; display: flex; justify-content: center; font-size: 40px; font-weight: bold; font-style: inherit; padding-bottom: 30px; padding-top: 40px">수조 관리 시스템 WEB</div>
 	<div>
 		<!-- *************FILTER************* -->
-		<div
-			style="display: flex; justify-content: flex-end; padding-right: 12%;">
-			<select id="time" onChange={}
-				style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
+		<div style="display: flex; justify-content: flex-end; padding-right: 12%;">
+			<select id="time" onChange={} style="margin: 15px; width: 100px; height: 35px; font-size: 20px; font-weight: normal; font-style: inherit;">
 				<option value="hour">hour</option>
 				<option value="week">week</option>
 				<option value="month">month</option>
@@ -176,83 +171,66 @@ th, td {
 		</div>
 
 		<!-- *************Chart************* -->
-		<div
-			style="display: flex; justify-content: center; width: 100%; height: 50vh; padding-bottom: 0%">
+		<div style="display: flex; justify-content: center; width: 100%; height: 50vh; padding-bottom: 0%">
 			<div id="chart_div" style="width: 90%; height: 80%;"></div>
 		</div>
-		<div
-			style="display: flex; justify-content: flex-end; position: relative; right: 90px; bottom: 50px;">
-			<div
-				style="display: flex; justify-content: space-around; align-items: center; width: 10%; border-radius: 2px; border-color: white; margin-bottom: 40px;">
-				<div
-					style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+		<div style="display: flex; justify-content: flex-end; position: relative; right: 90px; bottom: 50px;">
+			<div style="display: flex; justify-content: space-around; align-items: center; width: 10%; border-radius: 2px; border-color: white; margin-bottom: 40px;">
+				<div style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 				<div style="color: white;">정상</div>
-				<div
-					style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
+				<div style="display: flex; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
 				<div style="color: white;">이상</div>
 			</div>
 		</div>
 	</div>
 
 
-	<div
-		style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
+	<div style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
 		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_temper" value="temper"
-				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_temper" value="temper" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				Temperature
-				<div id="light_temper"
-					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_temper" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_ph" value="ph"
-				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_ph" value="ph" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				Ph
-				<div id="light_ph"
-					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_ph" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_light" value="light"
-				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_light" value="light" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				Light
-				<div id="light_light"
-					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
+				<div id="light_light" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_level" value="level"
-				style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_level" value="level" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
 				WaterLevel
-				<div id="light_waterLevel"
-					style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_waterLevel" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 	</div>
 	<div id="modal1" class="modal">
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn_temper">X</button>
-			<h2>Temperature</h2>
-			<input type="text" id="noticeSj" name="noticeSj" value="" />
-			********테이블********* <input type="button" id="btnSearch" value="조회"
-				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
-				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div style="display: flex; justify-content: center; font-size: x-large;">
+				<h2>Temperature</h2>
+			</div>
+			<button type="button" id="reload1" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv1" style="max-height: 700px; overflow: auto;">
-				<table>
-					<thead
-						style="background-color: #fad3cf !important; position: sticky; top: 0">
+				<table id = "table1">
+					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
 							<th>Value</th>
 						</tr>
 					</thead>
-					<tbody id="listbody1"
-						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					<tbody id="listbody1" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -262,22 +240,19 @@ th, td {
 	<div id="modal2" class="modal">
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn_ph">X</button>
-			<h2>Ph</h2>
-			<input type="text" id="noticeSj" name="noticeSj" value="" />
-			********테이블********* <input type="button" id="btnSearch" value="조회"
-				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
-				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div style="display: flex; justify-content: center; font-size: x-large;">
+				<h2>Ph</h2>
+			</div>
+			<button type="button" id="reload2" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv2" style="max-height: 700px; overflow: auto;">
-				<table>
-					<thead
-						style="background-color: #fad3cf !important; position: sticky; top: 0">
+				<table id = "table2">
+					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
 							<th>Value</th>
 						</tr>
 					</thead>
-					<tbody id="listbody2"
-						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					<tbody id="listbody2" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -287,22 +262,19 @@ th, td {
 	<div id="modal3" class="modal">
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn_light">X</button>
-			<h2>Light</h2>
-			<input type="text" id="noticeSj" name="noticeSj" value="" />
-			********테이블********* <input type="button" id="btnSearch" value="조회"
-				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
-				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div style="display: flex; justify-content: center; font-size: x-large;">
+				<h2>Light</h2>
+			</div>
+			<button type="button" id="reload3" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv3" style="max-height: 700px; overflow: auto;">
-				<table>
-					<thead
-						style="background-color: #fad3cf !important; position: sticky; top: 0">
+				<table id = "table3">
+					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
 							<th>Value</th>
 						</tr>
 					</thead>
-					<tbody id="listbody3"
-						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					<tbody id="listbody3" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -312,22 +284,19 @@ th, td {
 	<div id="modal4" class="modal">
 		<div class="modal_content">
 			<button type="button" id="modal_close_btn_level">X</button>
-			<h2>WaterLevel</h2>
-			<input type="text" id="noticeSj" name="noticeSj" value="" />
-			********테이블********* <input type="button" id="btnSearch" value="조회"
-				style="margin-bottom: 40px;" /> main.js 버튼 연결! <input type="button"
-				id="btnSearch" value="조회" style="margin-bottom: 40px;" />
+			<div style="display: flex; justify-content: center; font-size: x-large;">
+				<h2>WaterLevel</h2>
+			</div>
+			<button type="button" id="reload4" style="margin-bottom: 40px;">새로고침</button>
 			<div id="listDiv4" style="max-height: 700px; overflow: auto;">
-				<table>
-					<thead
-						style="background-color: #fad3cf !important; position: sticky; top: 0">
+				<table id = "table4">
+					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
 							<th>ID</th>
 							<th>Value</th>
 						</tr>
 					</thead>
-					<tbody id="listbody4"
-						style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
+					<tbody id="listbody4" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
 					</tbody>
 				</table>
 			</div>
@@ -337,6 +306,10 @@ th, td {
 
 </body>
 <script>
+
+/* 	function reloadDivArea() {
+		$('reload1').load(location.href + ' reload1');
+	} */
 	document.getElementById("modal_opne_btn_temper").onclick = function() {
 		document.getElementById("modal1").style.display = "block";
 	}
