@@ -362,7 +362,8 @@ $(document).ready(function() {
 				color : 'yellow'
 			},
 			seriesType : 'bars',
-			colors : [ '#fef4a9', '#cabbe9' ],
+			colors : [ '#9ab5c1', '#c1867b' ],
+//			colors : [ '#f5c16c', '#9ab5c1' ],
 			vAxis : {
 				textStyle : {
 					color : 'white',

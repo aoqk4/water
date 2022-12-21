@@ -78,6 +78,53 @@ th, td {
 	background: #fff;
 	border: 2px solid #666;
 }
+
+#btn button {
+	transition: 0.6s;
+	position: relative;
+	background-color: #DAAFAF;
+	width: 170px;
+	height: 170px;
+	font-size: 20px;
+	border-radius: 5%;
+	border-width: 0px;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);
+}
+
+#btn button:hover {
+	background-color: #9692af;
+	box-shadow: inset 0 0 0 36px var(- -btn-bg);
+}
+/* #modal_opne_btn_ph {
+  background: #b621fe;
+  border: none;
+  z-index: 1;
+}
+#modal_opne_btn_ph:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+#modal_opne_btn_ph:hover {
+  color: #fff;
+}
+#modal_opne_btn_ph:hover:after {
+  left: 0;
+  width: 100%;
+}
+#modal_opne_btn_ph:active {
+  top: 2px;
+} */
 </style>
 
 
@@ -93,69 +140,68 @@ th, td {
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- 차트 -->
 <script type="text/javascript">
-	
 	/* google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawVisualization); */
 
-/* 	function drawVisualization() { // 차트 데이터 setting 
-		var data = google.visualization.arrayToDataTable([
-				[ 'Month', 'ph', 'temp' ], [ '2004/05', 165, 400 ],
-				[ '2005/06', 135, 386 ], [ '2006/07', 157, 127 ],
-				[ '2006/07', 157, 429 ] ]);
-		var options = { // 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})
-			// title : '수조 관리 데이터 차트', 
-			chartArea : {
-				width : "80%",
-				height : "85%",
-				left : 50,
-				right : 110,
-				top : 20,
-				backgroundColor : {
-					fill : '',
-				},
-			},
-			labels : {
-				fontColor : "white",
-				fontSize : 18
-			},
-			backgroundColor : {
-				fill : '',
-			},
-			bar : {
-				groupWidth : '27%',
-				color : 'yellow'
-			},
-			seriesType : 'bars',
-			colors : [ '#fef4a9', '#cabbe9' ],
-			vAxis : {
-				textStyle : {
-					color : 'white',
-					fontSize : 19
-				}
-			},
-			hAxis : {
-				textStyle : {
-					color : 'white',
-					fontSize : 19
-				}
-			},
-			legend : {
-				textStyle : {
-					color : 'white',
-					fontSize : 16
+	/* 	function drawVisualization() { // 차트 데이터 setting 
+	 var data = google.visualization.arrayToDataTable([
+	 [ 'Month', 'ph', 'temp' ], [ '2004/05', 165, 400 ],
+	 [ '2005/06', 135, 386 ], [ '2006/07', 157, 127 ],
+	 [ '2006/07', 157, 429 ] ]);
+	 var options = { // 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})
+	 // title : '수조 관리 데이터 차트', 
+	 chartArea : {
+	 width : "80%",
+	 height : "85%",
+	 left : 50,
+	 right : 110,
+	 top : 20,
+	 backgroundColor : {
+	 fill : '',
+	 },
+	 },
+	 labels : {
+	 fontColor : "white",
+	 fontSize : 18
+	 },
+	 backgroundColor : {
+	 fill : '',
+	 },
+	 bar : {
+	 groupWidth : '27%',
+	 color : 'yellow'
+	 },
+	 seriesType : 'bars',
+	 colors : [ '#fef4a9', '#cabbe9' ],
+	 vAxis : {
+	 textStyle : {
+	 color : 'white',
+	 fontSize : 19
+	 }
+	 },
+	 hAxis : {
+	 textStyle : {
+	 color : 'white',
+	 fontSize : 19
+	 }
+	 },
+	 legend : {
+	 textStyle : {
+	 color : 'white',
+	 fontSize : 16
 
-				}
-			},
-		};
+	 }
+	 },
+	 };
 
-		var chart = new google.visualization.ComboChart(document
-				.getElementById('chart_div')); // 차트 그리기/
-		chart.draw(data, options); // 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) 
-		window.addEventListener('resize', drawVisualization, false); // 반응형
-		// window.addEventListener('resize', getElementById(''), false); // 반응형
-	}*/ 
+	 var chart = new google.visualization.ComboChart(document
+	 .getElementById('chart_div')); // 차트 그리기/
+	 chart.draw(data, options); // 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) 
+	 window.addEventListener('resize', drawVisualization, false); // 반응형
+	 // window.addEventListener('resize', getElementById(''), false); // 반응형
+	 }*/
 </script>
 </head>
 <body style="background: #324e7b;">
@@ -185,31 +231,32 @@ th, td {
 	</div>
 
 
-	<div style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
+	<div id="btn" style="width: 93%; height: 21%; margin-left: 3%; display: flex; justify-content: space-around;">
 		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_temper" value="temper" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_temper" value="temper">
+			<!-- style="position: relative; background-color: #DAAFAF; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);" -->
 				Temperature
 				<div id="light_temper" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 		<div id="root">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_ph" value="ph" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_ph" value="ph">
 				Ph
 				<div id="light_ph" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_light" value="light" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_light" value="light">
 				Light
 				<div id="light_light" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
-			<button type="button" id="modal_opne_btn_level" value="level" style="position: relative; background-color: #fad3cf; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);">
+			<button type="button" id="modal_opne_btn_level" value="level">
 				WaterLevel
 				<div id="light_waterLevel" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
 			</button>
