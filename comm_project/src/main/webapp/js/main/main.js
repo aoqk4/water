@@ -167,7 +167,7 @@ $(document).ready(function() {
 		console.log(url);
 		var param = new Object();
 		param.noticeSj = $("#noticeSj").val();
-// var data = []; // 전체 데이터 넣을 곳
+		// var data = []; // 전체 데이터 넣을 곳
 		$.ajax({
 			url : url,
 			type : "POST",
@@ -181,39 +181,69 @@ $(document).ready(function() {
 			// console.log(a);
 		});
 	}
+	
+	function minus(a,b){
+		if((((a-b) > 0.1) || ((b-a) > 0.1))  == true){
+			return true;			
+		}
+		else{
+			return false;
+		}
+	}
+	
+	function date(a, b){
+		a = Date.parse(a);
+		b = Date.parse(b);
+		
+		if(a == b){
+			return true;
+		} else{
+			return false;
+		}
+	}
 
 	function for1(sensor) {
 		var listDiv;
 		var listBody;
-//		console.log(charts[5].temper);
-//		console.log(typeof sensors[2].date);
-//		console.log(typeof charts[2].created_at);
-//		console.log(sensors[2].date);
-//		console.log(charts[2].created_at);
-//		var date = (charts[2].created_at).split(" ");
-		console.log(typeof Date.parse(sensors[2].date));
-//		Date.parse(date[0]);
-
+		
+//		console.log(typeof Date.parse(sensors[2].date));
+		
+		var cha = (charts[2].created_at).split(" ");
+		var origin_date = cha[0];	// 가장 최근 원본 날짜(string)
+		var origin_sensor;
+		
+		
 		for (i = 0; i < 50; i++) {
 			var tr = $("<tr>");
 			var td1 = $("<td>").text(sensors[i].date + " " + sensors[i].time);
+			var td2;
+			var comp = sensors[i].date;
+//			console.log(date(origin_date, comp));
+//			console.log(origin_date);
+//			console.log("Dddddddddd");
+//			console.log(comp);	
+			origin_sensor = charts[2].temper;
+			console.log(origin_sensor);	
+			console.log(sensors[i].temper);	
+			console.log(minus(origin_sensor, sensors[i].temper));	
+
+			
 			if (sensor == "temper") {
-				var td2 = $("<td>").text(sensors[i].temper);
-//				var cha = (charts[i].created_at).split(" ");
-////				var origin = Date.parse(cha[0]);
-//				var comp =  Date.parse(sensors[i].date);
-//				if(cha[0] == comp){	// 만약 날짜가 같으면
-//					if(charts[i].temper < sensors[i].temper && (charts[i].temper - sensors[i].temper) > 2){
-//						console.log("존나 큼");
-//					}*********************************여기 할 차례 값 비교하기!!!!!!!!!!!!!!!
-//				}
+				origin_sensor = charts[2].temper;	// 가장 최근 원본 비교 날짜(string)
+				td2 = $("<td>").text(sensors[i].temper);
+			if(date(origin_date, comp) == true){	// 날짜가 같으면
+				console.log("날짜 같음");
+				if(minus(origin_sensor, sensors[i].temper) == true){	// 원본데이터와 비교데이터 차이가 많이 나면
+					td2.css("color","red");
+				}
+			}
 				
 			} else if (sensor == "ph") {
-				var td2 = $("<td>").text(sensors[i].ph);
+				 td2 = $("<td>").text(sensors[i].ph);
 			} else if (sensor == "light") {
-				var td2 = $("<td>").text(sensors[i].light);
+				 td2 = $("<td>").text(sensors[i].light);
 			} else if (sensor == "level") {
-				var td2 = $("<td>").text(sensors[i].Fishbowl);
+				 td2 = $("<td>").text(sensors[i].Fishbowl);
 			}
 			tr.append(td1).append(td2);
 
@@ -251,9 +281,9 @@ $(document).ready(function() {
 					var td1 = $("<td>").text(sensors[i].date + " " + sensors[i].time);
 					if (sensor == "temper") {
 						var td2 = $("<td>").text(sensors[i].temper);
-//						if(sensors[i].temper){
+// if(sensors[i].temper){
 //						
-//						}
+// }
 					} else if (sensor == "ph") {
 						var td2 = $("<td>").text(sensors[i].ph);
 					} else if (sensor == "light") {
@@ -363,7 +393,7 @@ $(document).ready(function() {
 			},
 			seriesType : 'bars',
 			colors : [ '#9ab5c1', '#c1867b' ],
-//			colors : [ '#f5c16c', '#9ab5c1' ],
+// colors : [ '#f5c16c', '#9ab5c1' ],
 			vAxis : {
 				textStyle : {
 					color : 'white',
