@@ -58,7 +58,8 @@ th, td {
 	width: 100%;
 	height: 100%;
 	z-index: 1;
-	/* 	overflow-y: initial !important; */
+	overflow-y: initial !important;
+	background: rgba(80, 80, 80, 0.4);
 }
 
 .modal h2 {
@@ -131,78 +132,9 @@ th, td {
 <script type="text/javascript" src="/js/lib/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/js/main/main.js"></script>
 <!-- js파일 연결 url -->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-	});
-</script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<!-- 차트 -->
-<script type="text/javascript">
-	/* google.charts.load('current', {
-		'packages' : [ 'corechart' ]
-	});
-	google.charts.setOnLoadCallback(drawVisualization); */
-
-	/* 	function drawVisualization() { // 차트 데이터 setting 
-	 var data = google.visualization.arrayToDataTable([
-	 [ 'Month', 'ph', 'temp' ], [ '2004/05', 165, 400 ],
-	 [ '2005/06', 135, 386 ], [ '2006/07', 157, 127 ],
-	 [ '2006/07', 157, 429 ] ]);
-	 var options = { // 차트 옵션 setting - XY축 레이블 설정, 타이들 정의, 그래프 타입(seires:{5:{type:'line'}})
-	 // title : '수조 관리 데이터 차트', 
-	 chartArea : {
-	 width : "80%",
-	 height : "85%",
-	 left : 50,
-	 right : 110,
-	 top : 20,
-	 backgroundColor : {
-	 fill : '',
-	 },
-	 },
-	 labels : {
-	 fontColor : "white",
-	 fontSize : 18
-	 },
-	 backgroundColor : {
-	 fill : '',
-	 },
-	 bar : {
-	 groupWidth : '27%',
-	 color : 'yellow'
-	 },
-	 seriesType : 'bars',
-	 colors : [ '#fef4a9', '#cabbe9' ],
-	 vAxis : {
-	 textStyle : {
-	 color : 'white',
-	 fontSize : 19
-	 }
-	 },
-	 hAxis : {
-	 textStyle : {
-	 color : 'white',
-	 fontSize : 19
-	 }
-	 },
-	 legend : {
-	 textStyle : {
-	 color : 'white',
-	 fontSize : 16
-
-	 }
-	 },
-	 };
-
-	 var chart = new google.visualization.ComboChart(document
-	 .getElementById('chart_div')); // 차트 그리기/
-	 chart.draw(data, options); // 아래에 선언해놓은 div객체에 맵핑시켜서 차트 만듦(combochart는 차트 모양 변경) 
-	 window.addEventListener('resize', drawVisualization, false); // 반응형
-	 // window.addEventListener('resize', getElementById(''), false); // 반응형
-	 }*/
-</script>
 </head>
 <body style="background: #324e7b;">
 	<!-- background: linear-gradient(#7cbac9, #507496); -->

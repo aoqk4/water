@@ -53,8 +53,6 @@ $(document).ready(function () {
   var charts2 = [];
   
   function chart1() {
-    var param = new Object();
-    param.noticeSj = $("#noticeSj").val();
     $.ajax({
       url: "http://61.103.243.89:8080/deviceAPI/getcharthour",
       type: "GET",
@@ -63,28 +61,29 @@ $(document).ready(function () {
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
     	charts2 = result;
-      console.log(charts);
+//      console.log(charts);
     });
   }
   
-  setInterval(() => 	// status light
+  var abc = setInterval(() => 	// status light
   {
 	  chart1();
 	  postTemper("temper");
-
+	  postTemper("ph");
+	  
 	  var light_temper = $("#light_temper");
 	  var light_ph = $("#light_ph");
 
 	  var cha = charts2[0].created_at.split(" ");
 	  var origin_date = cha[0]; // 가장 최근 원본 날짜(string)
-	  console.log(origin_date);
+//	  console.log(origin_date);
 	  var origin_temper = charts2[0].temper; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
 	  var origin_ph = charts2[0].ph; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
-	  console.log(origin_temper);
+//	  console.log(origin_temper);
 	  var origin_ph = charts2[0].ph;
 	  var comp = sensors[0].date; // 가장 최근 센서 날짜(string)
-	  console.log(sensors[0].temper);
-	  console.log("555555555");
+//	  console.log(sensors[0].temper);
+//	  console.log("555555555");
 
 	  light_temper.css("background-color", "#b4cd93");
 	  light_ph.css("background-color", "#b4cd93");
@@ -102,29 +101,7 @@ $(document).ready(function () {
 	  
   }, 3000);
   
-//  chart1();
-//  postTemper("temper");
-//
-//  var light_temper = $("#light_temper");
-//  var cha = charts2[0].created_at.split(" ");
-//  var origin_date = cha[0]; // 가장 최근 원본 날짜(string)
-//  console.log(origin_date);
-//  var origin_temper = charts2[0].temper; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
-//  console.log(origin_temper);
-//  var origin_ph = charts2[0].ph;
-//  var comp = sensors[0].date; // 가장 최근 센서 날짜(string)
-//  console.log(sensors[0].temper);
-//  console.log("555555555");
-//
-//  light_temper.css("background-color", "#b4cd93");
-//
-//  if (date(origin_date, comp) == true) {
-//    // 날짜가 같으면
-//    if (minus(origin_temper, sensors[0].temper) == true) {
-//      // 원본데이터와 비교데이터 차이가 많이 나면
-//      light_temper.css("background-color", "#c94e4e");
-//    }
-//  }
+
 
   function for1(sensor) {
     var listDiv;
@@ -271,7 +248,7 @@ $(document).ready(function () {
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
       charts = result;
-      console.log(charts);
+//      console.log(charts);
     });
   }
 
@@ -281,11 +258,11 @@ $(document).ready(function () {
     // selectBox 선택 후 렌더링
     selectVal = $(this).val(); // value값 가져오기
     if (selectVal == "hour") {
-      console.log("hour찍힘~~~~~~~~~~");
+//      console.log("hour찍힘~~~~~~~~~~");
       selURL = "http://61.103.243.89:8080/deviceAPI/getcharthour";
     } else if (selectVal == "day") {
       selURL = "http://61.103.243.89:8080/deviceAPI/getchartday";
-      console.log("day찍힘~~~~~~~~~~");
+//      console.log("day찍힘~~~~~~~~~~");
     }
     var param = new Object();
     param.noticeSj = $("#noticeSj").val();
@@ -297,7 +274,7 @@ $(document).ready(function () {
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
       charts = result;
-      console.log(charts);
+//      console.log(charts);
     });
     google.charts.setOnLoadCallback(drawVisualization);
   });
@@ -404,6 +381,7 @@ $(document).ready(function () {
   }
 
   $("#modal_opne_btn_temper").click(function () {
+	  clearInterval(abc);
     postTemper("temper");
     for1("temper");
     $("#reload1").click(function () {
@@ -418,6 +396,7 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_ph").click(function () {
+	  clearInterval(abc);
     postTemper("ph");
     for1("ph");
     $("#reload2").click(function () {
@@ -432,6 +411,7 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_light").click(function () {
+	  clearInterval(abc);
     postTemper("light");
     for1("light");
     $("#reload3").click(function () {
@@ -446,6 +426,7 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_level").click(function () {
+	  clearInterval(abc);
     postTemper("level");
     for1("level");
     $("#reload4").click(function () {
