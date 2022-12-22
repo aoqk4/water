@@ -205,8 +205,8 @@ th, td {
 				<table id="table1">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
-							<th>ID</th>
-							<th>Value</th>
+							<th>Time</th>
+							<th>°C</th>
 						</tr>
 					</thead>
 					<tbody id="listbody1" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
@@ -227,8 +227,8 @@ th, td {
 				<table id="table2">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
-							<th>ID</th>
-							<th>Value</th>
+							<th>Time</th>
+							<th>pH</th>
 						</tr>
 					</thead>
 					<tbody id="listbody2" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
@@ -249,8 +249,8 @@ th, td {
 				<table id="table3">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
-							<th>ID</th>
-							<th>Value</th>
+							<th>Time</th>
+							<th>Lx</th>
 						</tr>
 					</thead>
 					<tbody id="listbody3" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
@@ -271,8 +271,8 @@ th, td {
 				<table id="table4">
 					<thead style="background-color: #fad3cf !important; position: sticky; top: 0">
 						<tr>
-							<th>ID</th>
-							<th>Value</th>
+							<th>Time</th>
+							<th>mm</th>
 						</tr>
 					</thead>
 					<tbody id="listbody4" style="max-height: 700px; overflow: auto; width: 350px; height: 200px;">
