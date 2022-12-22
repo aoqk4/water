@@ -2,7 +2,6 @@ $(document).ready(function () {
   // const contents = document.querySelector(".contents") // tbody 태그
 
   var sensors = [];
-  // console.log(a);
   var i = 0,
     j = 0;
   var selURL;
@@ -12,8 +11,6 @@ $(document).ready(function () {
   function postTemper(sensor) {
     // 시작 센서 데이터 불러옴
     var url = "http://61.103.243.89:8080/deviceAPI/post" + sensor;
-    // http://61.103.243.89:8080/deviceAPI/{posttemper}
-    console.log(url);
     var param = new Object();
     param.noticeSj = $("#noticeSj").val();
     // var data = []; // 전체 데이터 넣을 곳
@@ -27,7 +24,6 @@ $(document).ready(function () {
     }).done(function (result) {
       sensors = null;
       sensors = result;
-      // console.log(a);
     });
   }
 
@@ -60,45 +56,40 @@ $(document).ready(function () {
       dataType: "json",
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
-    	charts2 = result;
-//      console.log(charts);
+       charts2 = result;
     });
   }
   
-  var abc = setInterval(() => 	// status light
+  var abc = setInterval(() =>    // status light
   {
-	  chart1();
-	  postTemper("temper");
-	  postTemper("ph");
-	  
-	  var light_temper = $("#light_temper");
-	  var light_ph = $("#light_ph");
+     chart1();
+     postTemper("temper");
+     postTemper("ph");
+     
+     var light_temper = $("#light_temper");
+     var light_ph = $("#light_ph");
 
-	  var cha = charts2[0].created_at.split(" ");
-	  var origin_date = cha[0]; // 가장 최근 원본 날짜(string)
-//	  console.log(origin_date);
-	  var origin_temper = charts2[0].temper; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
-	  var origin_ph = charts2[0].ph; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
-//	  console.log(origin_temper);
-	  var origin_ph = charts2[0].ph;
-	  var comp = sensors[0].date; // 가장 최근 센서 날짜(string)
-//	  console.log(sensors[0].temper);
-//	  console.log("555555555");
+     var cha = charts2[0].created_at.split(" ");
+     var origin_date = cha[0]; // 가장 최근 원본 날짜(string)
+     var origin_temper = charts2[0].temper; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
+     var origin_ph = charts2[0].ph; // 가장 최근 원본 데이터 **데이터가 별로 없어서 20일 날짜로 함! -> 원래는 charts[0].temper임
+     var origin_ph = charts2[0].ph;
+     var comp = sensors[0].date; // 가장 최근 센서 날짜(string)
 
-	  light_temper.css("background-color", "#b4cd93");
-	  light_ph.css("background-color", "#b4cd93");
-	  if (date(origin_date, comp) == true) {
-	    // 날짜가 같으면
-	    if (minus(origin_temper, sensors[0].temper) == true) {
-	      // 원본데이터와 비교데이터 차이가 많이 나면
-	      light_temper.css("background-color", "#c94e4e");
-	    }
-	    if (minus(origin_ph, sensors[0].ph) == true) {
-		      // 원본데이터와 비교데이터 차이가 많이 나면
-		      light_ph.css("background-color", "#c94e4e");
-		    }
-	  }
-	  
+     light_temper.css("background-color", "#b4cd93");
+     light_ph.css("background-color", "#b4cd93");
+     if (date(origin_date, comp) == true) {
+       // 날짜가 같으면
+       if (minus(origin_temper, sensors[0].temper) == true) {
+         // 원본데이터와 비교데이터 차이가 많이 나면
+         light_temper.css("background-color", "#c94e4e");
+       }
+       if (minus(origin_ph, sensors[0].ph) == true) {
+            // 원본데이터와 비교데이터 차이가 많이 나면
+            light_ph.css("background-color", "#c94e4e");
+          }
+     }
+     
   }, 3000);
   
 
@@ -123,7 +114,6 @@ $(document).ready(function () {
         //        circle.css('background-color','blue')
         if (date(origin_date, comp) == true) {
           // 날짜가 같으면
-          //          console.log("날짜 같음");
           if (minus(origin_sensor, sensors[i].temper) == true) {
             // 원본데이터와 비교데이터 차이가 많이 나면
             td2.css("color", "red");
@@ -138,7 +128,6 @@ $(document).ready(function () {
         td2 = $("<td>").text(sensors[i].ph);
         if (date(origin_date, comp) == true) {
           // 날짜가 같으면
-          console.log("날짜 같음");
           if (minus(origin_sensor, sensors[i].ph) == true) {
             // 원본데이터와 비교데이터 차이가 많이 나면
             td2.css("color", "red");
@@ -192,7 +181,6 @@ $(document).ready(function () {
             td2 = $("<td>").text(sensors[i].temper);
             if (date(origin_date, comp) == true) {
               // 날짜가 같으면
-              //              console.log("날짜 같음");
               if (minus(origin_sensor, sensors[i].temper) == true) {
                 // 원본데이터와 비교데이터 차이가 많이 나면
                 td2.css("color", "red");
@@ -205,7 +193,6 @@ $(document).ready(function () {
             td2 = $("<td>").text(sensors[i].ph);
             if (date(origin_date, comp) == true) {
               // 날짜가 같으면
-              //              console.log("날짜 같음");
               if (minus(origin_sensor, sensors[i].ph) == true) {
                 // 원본데이터와 비교데이터 차이가 많이 나면
                 td2.css("color", "red");
@@ -248,7 +235,6 @@ $(document).ready(function () {
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
       charts = result;
-//      console.log(charts);
     });
   }
 
@@ -258,11 +244,9 @@ $(document).ready(function () {
     // selectBox 선택 후 렌더링
     selectVal = $(this).val(); // value값 가져오기
     if (selectVal == "hour") {
-//      console.log("hour찍힘~~~~~~~~~~");
       selURL = "http://61.103.243.89:8080/deviceAPI/getcharthour";
     } else if (selectVal == "day") {
       selURL = "http://61.103.243.89:8080/deviceAPI/getchartday";
-//      console.log("day찍힘~~~~~~~~~~");
     }
     var param = new Object();
     param.noticeSj = $("#noticeSj").val();
@@ -274,7 +258,6 @@ $(document).ready(function () {
       async: false, // ture:비동기/false:동기 (기다렸다가 실행)
     }).done(function (result) {
       charts = result;
-//      console.log(charts);
     });
     google.charts.setOnLoadCallback(drawVisualization);
   });
@@ -381,11 +364,10 @@ $(document).ready(function () {
   }
 
   $("#modal_opne_btn_temper").click(function () {
-	  clearInterval(abc);
+     clearInterval(abc);
     postTemper("temper");
     for1("temper");
     $("#reload1").click(function () {
-      console.log("reload click");
       $("#table1 > tbody").empty();
       $("#listDiv1").scrollTop(0);
       sensors = [];
@@ -396,11 +378,10 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_ph").click(function () {
-	  clearInterval(abc);
+     clearInterval(abc);
     postTemper("ph");
     for1("ph");
     $("#reload2").click(function () {
-      console.log("reload click");
       $("#table2 > tbody").empty();
       $("#listDiv2").scrollTop(0);
       sensors = [];
@@ -411,11 +392,10 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_light").click(function () {
-	  clearInterval(abc);
+     clearInterval(abc);
     postTemper("light");
     for1("light");
     $("#reload3").click(function () {
-      console.log("reload click");
       $("#table3 > tbody").empty();
       $("#listDiv3").scrollTop(0);
       sensors = [];
@@ -426,11 +406,10 @@ $(document).ready(function () {
     });
   });
   $("#modal_opne_btn_level").click(function () {
-	  clearInterval(abc);
+     clearInterval(abc);
     postTemper("level");
     for1("level");
     $("#reload4").click(function () {
-      console.log("reload click");
       $("#table4 > tbody").empty();
       $("#listDiv4").scrollTop(0);
       sensors = [];
