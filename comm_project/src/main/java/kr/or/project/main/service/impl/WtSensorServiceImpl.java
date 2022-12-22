@@ -36,6 +36,66 @@ public class WtSensorServiceImpl implements WtSensorService {
 		System.out.println("123");
 		try {
 			return mapper.readALLWtSensor(WtSensor);
+		// TODO Auto-generated method stub
+		System.out.println("123");
+		try {
+			return mapper.readALLWtSensor(WtSensor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러다 병신아");
+			return null;
+		}
+	}
+	
+	@Override
+	public List<WtSensor> readLightWtSensor(WtSensor WtSensor) {
+		// TODO Auto-generated method stub
+		System.out.println("123");
+		try {
+			return mapper.readLightWtSensor(WtSensor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러다 병신아");
+			return null;
+		}
+	}
+	
+	@Override
+	public List<WtSensor> readPhWtSensor(WtSensor WtSensor) {
+		// TODO Auto-generated method stub
+		System.out.println("123");
+		try {
+			return mapper.readPhWtSensor(WtSensor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러다 병신아");
+			return null;
+		}
+	}
+	
+	@Override
+	public List<WtSensor> readLevelWtSensor(WtSensor WtSensor) {
+		// TODO Auto-generated method stub
+		System.out.println("123");
+		try {
+			return mapper.readLevelWtSensor(WtSensor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("에러다 병신아");
+			return null;
+		}
+	}
+	
+	@Override
+	public List<WtSensor> readTemperWtSensor(WtSensor WtSensor) {
+		// TODO Auto-generated method stub
+		System.out.println("123");
+		try {
+			return mapper.readTemperWtSensor(WtSensor);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

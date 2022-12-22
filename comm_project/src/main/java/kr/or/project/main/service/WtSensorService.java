@@ -8,7 +8,9 @@ import kr.or.project.main.model.WtChart;
 import kr.or.project.main.model.WtSensor;
 
 public interface WtSensorService {	
+
 	public void insertSensorReadings(SensorReadings sensorReadings);
+	public List<WtSensor> createSensor(WtSensor WtSensor);
 	public List<WtSensor> readALLWtSensor(WtSensor WtSensor);
 	public List<WtSensor> readLightWtSensor(WtSensor WtSensor);
 	public List<WtSensor> readPhWtSensor(WtSensor WtSensor);
@@ -16,4 +18,6 @@ public interface WtSensorService {
 	public List<WtSensor> readTemperWtSensor(WtSensor WtSensor);
 	public List<WtChart> readChartHour(WtChart WtChart);
 	public List<WtChart> readChartDay(WtChart WtChart);
+	public List<WtSensor> updateWtSensor(WtSensor WtSensor);
+	public List<WtSensor> deleteSensor(WtSensor WtSensor);
 }
