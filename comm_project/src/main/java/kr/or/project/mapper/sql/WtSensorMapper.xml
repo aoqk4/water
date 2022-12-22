@@ -101,7 +101,7 @@
 		resultType="kr.or.project.main.model.WtChart">
 		SELECT format(AVG(WATER_QLTY), 3) ph, format(AVG(TEMPERATURE), 3) temper,
 		DATE_FORMAT(CREATED_AT, "%Y-%m-%d %H:00") created_at FROM wt_sensor GROUP BY
-		DATE_FORMAT(CREATED_AT, "%Y-%m-%d %H") ORDER BY CREATED_AT DESC
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d %H") ORDER BY CREATED_AT DESC limit 6
 	</select>
 
 	<!-- select light -->
@@ -109,7 +109,7 @@
 		resultType="kr.or.project.main.model.WtChart">
 		SELECT format(AVG(WATER_QLTY), 3) ph, format(AVG(TEMPERATURE), 3) temper,
 		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") created_at FROM wt_sensor GROUP BY
-		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") ORDER BY CREATED_AT DESC
+		DATE_FORMAT(CREATED_AT, "%Y-%m-%d") ORDER BY CREATED_AT DESC limit 6
 	</select>
 		date_format(CREATED_AT,
 		'%T') time
