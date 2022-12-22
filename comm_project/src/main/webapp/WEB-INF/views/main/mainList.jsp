@@ -235,30 +235,30 @@ th, td {
 		<div id="root">
 			<!-- 모달창 -->
 			<button type="button" id="modal_opne_btn_temper" value="temper">
-			<!-- style="position: relative; background-color: #DAAFAF; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);" -->
+				<!-- style="position: relative; background-color: #DAAFAF; width: 170px; height: 170px; font-size: 20px; border-radius: 5%; border-width: 0px; box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, .2);" -->
 				Temperature
-				<div id="light_temper" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_temper" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px;"></div>
 			</button>
 		</div>
 		<div id="root">
 			<!-- 모달창 -->
 			<button type="button" id="modal_opne_btn_ph" value="ph">
 				Ph
-				<div id="light_ph" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_ph" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
 			<button type="button" id="modal_opne_btn_light" value="light">
 				Light
-				<div id="light_light" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #c94e4e;"></div>
+				<div id="light_light" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px;"></div>
 			</button>
 		</div>
 		<div id="root" style="">
 			<!-- 모달창 -->
 			<button type="button" id="modal_opne_btn_level" value="level">
 				WaterLevel
-				<div id="light_waterLevel" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px; background-color: #b4cd93;"></div>
+				<div id="light_waterLevel" style="position: absolute; right: -30px; top: -30px; display: flex; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border-width: 0px;"></div>
 			</button>
 		</div>
 	</div>
