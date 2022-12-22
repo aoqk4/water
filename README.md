@@ -1,5 +1,8 @@
 # water
 
+# 수조관리 프로그램
+  - 온도와 PH 농도를 중심으로
+
 ## Team Memeber
 
   - 박종훈, 윤승준, 정도현, 이슬비, 이종석
@@ -15,3 +18,14 @@
   - WEB 1.0 ver 완성.
   - APP 1.0 ver 완성.
   - 기타 버그 수정
+
+
+
+### Java HTTPConnect & DBConnect 참고 lib
+
+  - https://github.com/aoqk4/javaSerial
+
+
+### Arduino Serial JSON 참고 lib
+
+  - https://github.com/aoqk4/javaArduino
