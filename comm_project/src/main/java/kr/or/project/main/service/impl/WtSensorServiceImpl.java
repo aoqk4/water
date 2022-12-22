@@ -16,7 +16,6 @@ import kr.or.project.mapper.WtSensorMapper;
 
 @Service
 public class WtSensorServiceImpl implements WtSensorService {
-	boolean 이진우왔다감  = true;
 	@Autowired
 	private WtSensorMapper mapper;
 	
